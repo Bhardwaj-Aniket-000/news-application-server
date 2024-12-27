@@ -10,7 +10,7 @@ const bodyParser = require("body-parser");
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://aniketbhardwaj.netlify.app", "http://localhost"],
+    origin: ["https://aniketbhardwaj.netlify.app", "http://localhost"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
