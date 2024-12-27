@@ -8,13 +8,7 @@ const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
 
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: ["https://aniketbhardwaj.netlify.app", "http://localhost"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
