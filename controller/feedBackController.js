@@ -2,6 +2,7 @@ const { response } = require("express");
 const { GenerateToken } = require("../middleware/jwt");
 const userFeedBack = require("../models/feedback");
 const userData = require("../models/userInfo");
+const portfoliofeedbacks = require("../models/portfolioFeeds");
 const bcrypt = require("bcrypt");
 
 const getIndex = async (req, res, next) => {
@@ -160,6 +161,24 @@ const accountDelete = async (req, res, next) => {
     });
   }
 };
+const portfoliofeeds = async (req, res, next) => {
+  try {
+    const data = req.body;
+    const response = await portfoliofeedbacks({
+      username: data.name,
+      email: data.userEmail,
+      content: data.userMessage,
+    });
+    response.time = new Date().toLocaleString();
+    if (response) {
+      response.save();
+      return res.json("successfully shared information");
+    }
+    res.json("information not shared");
+  } catch (error) {
+    res.json({ error: "some error occurred" });
+  }
+};
 module.exports = {
   userLogin,
   getIndex,
@@ -169,4 +188,5 @@ module.exports = {
   getFeedback,
   feedbackUpdate,
   accountDelete,
+  portfoliofeeds,
 };

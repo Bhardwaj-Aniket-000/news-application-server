@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const MONGO_URL = process.env.MONGO_URL;
 const MONGO_LOCAL_URL = process.env.MONGO_LOCAL_URL;
-mongoose.connect(MONGO_URL);
+mongoose.connect(MONGO_LOCAL_URL);
 const db = mongoose.connection;
 
 db.on("connected", () => {

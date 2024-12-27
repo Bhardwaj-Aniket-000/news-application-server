@@ -10,6 +10,7 @@ const {
   getFeedback,
   feedbackUpdate,
   accountDelete,
+  portfoliofeeds,
 } = require("../controller/feedBackController");
 
 router.route("/").get(getIndex);
@@ -20,5 +21,6 @@ router.route("/api/v3/signup").post(userSignup);
 router.route("/api/v3/deletefeedback").delete(VerifyToken, feedbackDelete);
 router.route("/api/v3/updatefeedback").put(VerifyToken, feedbackUpdate);
 router.route("/api/v3/clearAcount").delete(VerifyToken, accountDelete);
+router.route("/api/v3/portfoliofeeds").post(portfoliofeeds);
 
 module.exports = router;
